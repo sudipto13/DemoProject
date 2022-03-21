@@ -19,6 +19,8 @@ steps:
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
+    publishLocation: 'FilePath'
+    TargetPath: '$(Build.Repository.LocalPath)'
 - task: GoTool@0
   inputs:
     version: '1.10'
