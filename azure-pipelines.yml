@@ -34,7 +34,7 @@ steps:
 - task: Go@0
   displayName: 'go get'
   inputs:
-    arguments: '-d'
+    arguments: 'go get github.com/lib/pq'
     workingDirectory: '$(System.DefaultWorkingDirectory)'
 
 - task: Go@0
