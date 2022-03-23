@@ -4,10 +4,10 @@
 # https://aka.ms/yaml
 
 variables:
-  GOBIN:  '$(GOPATH)/bin' # Go binaries path
+  GOBIN:  '$(C:\Users\cbnits-158\go)/bin' # Go binaries path
   GOROOT: '/usr/local/go1.11' # Go installation path
-  GOPATH: '$(system.defaultWorkingDirectory)/gopath' # Go workspace path
-  modulePath: '$(GOPATH)/src/github.com/$(build.sudipto13/DemoProject)'
+  GOPATH: '$(system.defaultWorkingDirectory)/C:\Users\cbnits-158\go' # Go workspace path
+  modulePath: '$(C:\Users\cbnits-158\go)/src/github.com/$(build.sudipto13/DemoProject)'
 
 trigger:
 - master
