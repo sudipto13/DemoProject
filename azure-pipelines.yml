@@ -35,6 +35,7 @@ steps:
   displayName: 'go get'
   inputs:
     arguments: '-d'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
 
 - task: Go@0
   displayName: 'go build'
