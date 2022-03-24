@@ -22,10 +22,9 @@ steps:
   inputs:
     version: '1.15'
 
-- 
 - task: Go@0
+  displayName: 'go build'
   inputs:
-    command: 'build'
-    arguments: 'go build ./vfrmap'
-    workingDirectory: '$(Build.ArtifacrStagingDirectory)/main'
+    command: build
+    arguments: '-o "$(System.TeamProject).exe"'
 
