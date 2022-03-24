@@ -3,34 +3,28 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-variables:
-  GOBIN:  '$(C:/Users/cbnits-158/go)/bin' # Go binaries path
-  GOROOT: '/usr/local/go1.11' # Go installation path
-  GOPATH: '$(system.defaultWorkingDirectory)/C:/Users/cbnits-158/go' # Go workspace path
-  modulePath: '$(C:/Users/cbnits-158/go)/src/github.com/$(build.sudipto13/DemoProject)'
-
-trigger:
-- main
+trigger: 
+ - master
 
 pool:
-  vmImage: ubuntu-latest
+   vmImage: 'ubuntu-latest'
 
-steps:
-- task: CopyFiles@2
-  inputs:
-    Contents: '**'
-    TargetFolder: '$(Build.SourcesDirectory)'
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.SourcesDirectory)'
-    ArtifactName: 'drop'
+steps: 
 - task: GoTool@0
   inputs:
-    version: '1.15'
+    version: '1.13.5'
+- task: Go@0
+  inputs:
+    command: 'get'
+    arguments: '-d'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
 - task: Go@0
   inputs:
     command: 'build'
-    workingDirectory: 'System.DefaultWorkingDirectory'
-
-
-
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
+- task: CopyFiles@2
+  inputs:
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+- task: PublishBuildArtifacts@1
+  inputs:
+     artifactName: drop
