@@ -30,8 +30,7 @@ steps:
 - task: Go@0
   inputs:
     command: 'build'
-    arguments: 'd'
-    workingDirectory: '$(Build.SourcesDirectory)/Demoproject'
+    workingDirectory: 'System.DefaultWorkingDirectory'
 
 
 
