@@ -19,10 +19,10 @@ steps:
 - task: CopyFiles@2
   inputs:
     Contents: '**'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    TargetFolder: '$(Build.SourcesDirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    PathtoPublish: '$(Build.SourcesDirectory)'
     ArtifactName: 'drop'
 - task: GoTool@0
   inputs:
@@ -31,7 +31,7 @@ steps:
   inputs:
     command: 'build'
     arguments: 'd'
-    workingDirectory: '$(Build.ArtifactStagingDirectory)/main'
+    workingDirectory: '$(Build.SourcesDirectory)/Demoproject'
 
 
 
