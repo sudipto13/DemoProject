@@ -9,19 +9,16 @@ resources:
 - repo: self
 
 variables:
-  tag: '$(Build.BuildId)'
+    # Container registry service connection established during pipeline creation
+    dockerRegistryServiceConnection: '{{ containerRegistryConnection.Id }}'
+    imageRepository: 'javascriptdocker'
+    containerRegistry: 'apdemo13.azurecr.io'
+    dockerfilePath: '$(Build.SourcesDirectory)/app/Dockerfile'
+    tag: '$(Build.BuildId)'
 
-
-
-  jobs:
-  - job: Build
-    displayName: Build
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-    
-        - task: Docker@2
-          inputs:
-            repository: 'apdemo13.azurecr.io'
-            command: 'buildAndPush'
-            Dockerfile: '**/Dockerfile'
+    # Agent VM image name
+    vmImageName: 'ubuntu-latest'
+stages:
+  -  stage: Build
+     displayName: Build and push stage
+  
